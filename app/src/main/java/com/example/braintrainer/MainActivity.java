@@ -1,6 +1,8 @@
 package com.example.braintrainer;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.MediaRouteButton;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -51,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 playAgainButton.setVisibility(View.VISIBLE);
                 timerTextView.setText("0s");
                 resultTextView.setText("Your Score: " + Integer.toString(score) + "/" + Integer.toString(numberOfQuestions));
+
+                gridLayout.setVisibility(View.INVISIBLE);
             }
         }.start();
 
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void  chooseAnswer (View view) {
-        
+        Log.e("location", Integer.toString(locationOfCorrectAnswer));
         if (view.getTag().toString().equals(Integer.toString(locationOfCorrectAnswer))) {
             score++;
             resultTextView.setText("Correct!");
@@ -98,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void start (View view) {
         startButton.setVisibility(View.INVISIBLE);
-        gameRelativeLayout.setVisibility(RelativeLayout.VISIBLE);
+
         playAgain(findViewById(R.id.playAgainButton));
     }
 
@@ -117,7 +121,4 @@ public class MainActivity extends AppCompatActivity {
         pointsTextView = (TextView) findViewById(R.id.pointsTextView);
         timerTextView = (TextView) findViewById(R.id.timerTextView);
         playAgainButton = (Button)findViewById(R.id.playAgainButton);
-        gameRelativeLayout = (RelativeLayout) findViewById(R.id.gameRelativeLayout);
-
-
     }}
